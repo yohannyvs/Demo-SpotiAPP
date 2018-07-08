@@ -7,31 +7,31 @@ import { map } from 'rxjs/operators';
 })
 export class SpotifyService {
 
-  tokenApp:string = 'BQDzP2o5EUWIHCOA8aKSwLM2sY4nWH3Pu0q9fn7AhfTwKc-yzGvG6Xi6KbksleYj5-n2M7apzrLT1IvGw8I';
+  tokenApp:string = 'BQC2i0tsOvQkSFDn7zrC0HQ6QdPvxZdVJpaT1reIfPQC9motx3LSyYQyAYIuDUJpwW9vG0k9wwjIbqCn8H0';
 
   constructor( private http: HttpClient ) {
     console.log( "Spotify Service Listo" );
    }
 
+   getQuery( query: string ) {
+  
+    const URL = `https://api.spotify.com/v1/${ query }`;
+
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${ this.tokenApp }` });
+
+    return this.http.get( URL, { headers } );
+
+   }
+
    getNewReleases(){
 
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${ this.tokenApp }`
-    });
-
-    return this.http.get( 'https://api.spotify.com/v1/browse/new-releases', { headers } ).
-    pipe( map( data => data['albums'].items ) );
+    return this.getQuery( 'browse/new-releases' ).pipe( map( data => data['albums'].items ) );
 
    }
 
    getArtista( termino: string ) {
 
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${ this.tokenApp }`
-    });
-
-    return this.http.get( `https://api.spotify.com/v1/search?q=${ termino }&type=artist&limit=15` , { headers } ).
-    pipe( map( data =>  data['artists'].items ) );
+    return this.getQuery( `search?q=${ termino }&type=artist&limit=15` ).pipe( map( data =>  data['artists'].items ) );
 
   }
 
