@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 })
 export class SpotifyService {
 
-  tokenApp:string = 'BQAf7ZZoHY0D7Xn9tX27EznroK5Glla2MNLlrCWlI-H0m8OuYhUc2WH-p7Wf8o7YaF3bQsTa_4L7p__i3yM';
+  tokenApp:string = 'BQBwjT7qa36s4ohTN22rTMUIEG_pAD0qAt0tj0KkZAMazmEdjhKQX0ox6NaI0lMi9w_v55L3abq0qaPYU-U';
 
   constructor( private http: HttpClient ) {
     console.log( "Spotify Service Listo" );
