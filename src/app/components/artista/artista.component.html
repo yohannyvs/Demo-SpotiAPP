@@ -18,3 +18,26 @@
     </div>
 
 </div>
+
+<div class="row m-3" *ngIf="!loading">
+    <div class="col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Album</th>
+                    <th>Canción</th>
+                    <th>Vista Previa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let track of topTracks">
+                    <td> <img [src]="track.album.images | noimage" class="img-thumb"> </td>
+                    <td> {{ track.album.name }} </td>
+                    <td> {{ track.name }} </td>
+                    <td> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

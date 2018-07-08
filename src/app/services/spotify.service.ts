@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 })
 export class SpotifyService {
 
-  tokenApp:string = 'BQDTAktqMcMKn8SGDTgZHx8qSevee7asFci0qa6LJJaVEzTWMSUv9Lv9k6B5r1Fm7nT6A13-fI5cBotb6JI';
+  tokenApp:string = 'BQC1SJ3WMd9EHcbRaYnHYsw_o-epL61Btnx0QhimyrJII52mvermjXJPjcrgsiIiLdKtmPWFKtj04gnspC4';
 
   constructor( private http: HttpClient ) {
     console.log( "Spotify Service Listo" );
@@ -37,6 +37,10 @@ export class SpotifyService {
 
   getArtista( id: string ) {
     return this.getQuery( `artists/${ id }` );
+  }
+
+  getTopTracks( id: string ) {
+    return this.getQuery( `artists/${ id }/top-tracks?country=us` ).pipe( map( data =>  data['tracks'] ) );
   }
 
 }
